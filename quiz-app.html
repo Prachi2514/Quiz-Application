@@ -1,0 +1,95 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="styleapp.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="welcome-screen">
+            <div class="trophy-icon">🏆</div>
+            <h1>Quiz Master</h1>
+            <p class="subtitle">Test your knowledge with our interactive quiz!</p>
+            
+            <div class="quiz-rules">
+                <h2>Quiz Rules:</h2>
+                <ul>
+                    <li>Total Questions: <strong>10</strong></li>
+                    <li>Time Limit: <strong>5 minutes</strong></li>
+                    <li>Each correct answer gives you <strong>1 point</strong></li>
+                    <li>You can navigate between questions</li>
+                    <li>Click Submit to finish the quiz</li>
+                </ul>
+            </div>
+
+            <button class="btn" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="hidden">
+            <div class="quiz-header">
+                <div class="timer">
+                    <span class="timer-icon">⏱️</span>
+                    <span id="timer">5:00</span>
+                </div>
+                <div class="question-counter">
+                    Question <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+
+            <div class="question-card">
+                <span class="category-badge" id="category">Web Development</span>
+                <div class="question-text" id="questionText"></div>
+                <div class="options" id="options"></div>
+            </div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn">Previous</button>
+                <button class="btn" onclick="nextQuestion()" id="nextBtn" disabled>Next</button>
+                <button class="btn btn-success hidden" onclick="submitQuiz()" id="submitBtn" disabled>Submit Quiz</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="results-screen hidden">
+            <div class="result-icon" id="resultIcon">🏆</div>
+            <h1 class="result-title">Quiz Completed!</h1>
+            <p class="result-subtitle">Here's how you performed</p>
+
+            <div class="score-summary">
+                <div class="score-card correct">
+                    <div class="score-value" id="correctScore">0</div>
+                    <div class="score-label">Correct Answers</div>
+                </div>
+                <div class="score-card wrong">
+                    <div class="score-value" id="wrongScore">0</div>
+                    <div class="score-label">Wrong Answers</div>
+                </div>
+                <div class="score-card percentage">
+                    <div class="score-value" id="percentageScore">0%</div>
+                    <div class="score-label">Score</div>
+                </div>
+            </div>
+
+            <div class="performance-message" id="performanceMessage"></div>
+
+            <div class="review-section">
+                <h2 class="review-title">Answer Review</h2>
+                <div id="reviewContainer"></div>
+            </div>
+
+            <button class="btn" onclick="restartQuiz()">🔄 Retry Quiz</button>
+        </div>
+    </div>
+
+    <script src="scriptapp.js"></script>
+</body>
+</html>
